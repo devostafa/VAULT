@@ -29,7 +29,6 @@ toggle_vault = tk.Button(
     command=toggle_mode).pack()
 
 #--------------------- Key and Output Inputs ---------------------#
-
 body_frame = tk.Frame(gui)
 body_frame.pack()
 
@@ -59,7 +58,6 @@ output_input.pack(side=tk.LEFT, pady=10)
 output_entry = tk.Button(output_dir_frame, command = select_output_folder, font=(default_font, font_size_default)) # Selectable folder path
 output_entry.pack(side=tk.LEFT, pady=4) 
 
-
 #--------------------- Input Files Selection ---------------------#
 files_input_frame = tk.Frame(body_frame)
 files_input_frame.pack()
@@ -84,7 +82,6 @@ files_entry = tk.Text(files_input_frame, font=(default_font, font_size_default),
 files_entry.pack()
 
 #--------------------- Submit ---------------------#
-
 submit_frame = tk.Frame(body_frame)
 submit_frame.pack(pady=20)
 
