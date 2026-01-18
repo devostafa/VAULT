@@ -1,5 +1,5 @@
-from cryptography.fernet import Fernet
 import os
+from cryptography.fernet import Fernet
 
 def encrypt(key, output_path, files):
     for file in files:
