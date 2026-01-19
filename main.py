@@ -93,9 +93,9 @@ def submit_action():
     key = key_entry.get()
     output_dir = output_path.get()
     if mode_var.get() == 1:
-        encrypt(selected_files, key, output_dir)
+        encrypt(key, output_dir, selected_files)
     else:
-        decrypt(selected_files, key, output_dir)
+        decrypt(key, output_dir, selected_files)
 
 submit_button = tk.Button(submit_frame, text="Encrypt", command=submit_action, font=(default_font, font_size_default, "bold"), bd=0, padx=10, pady=5, bg="green", fg="white")
 submit_button.pack()
