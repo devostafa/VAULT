@@ -55,14 +55,12 @@ output_label = tk.Label(output_dir_frame, text="Output Dir ", font=(default_font
 output_label.pack(side=tk.LEFT)
 output_input = tk.Entry(output_dir_frame, textvariable=output_path, font=(default_font, font_size_default))
 output_input.pack(side=tk.LEFT, pady=10)
-output_entry = tk.Button(output_dir_frame, command = select_output_folder, font=(default_font, font_size_default)) # Selectable folder path
+output_entry = tk.Button(output_dir_frame, text="Select", command = select_output_folder, font=(default_font, font_size_default)) # Selectable folder path
 output_entry.pack(side=tk.LEFT, pady=4) 
 
 #--------------------- Input Files Selection ---------------------#
 files_input_frame = tk.Frame(body_frame)
 files_input_frame.pack()
-files_label = tk.Label(files_input_frame, text="Input Files ", font=(default_font, font_size_default))
-files_label.pack()
 
 selected_files = []
 
@@ -75,8 +73,14 @@ def select_input_files():
         files_entry.insert("1.0", "\n".join(selected_files))
         submit_button.config(bg="green")
 
-files_browse_button = tk.Button(files_input_frame, text="Browse Files", command=select_input_files)
-files_browse_button.pack()
+files_interactive_frame = tk.Frame(files_input_frame)
+files_interactive_frame.pack(pady=10)
+
+files_label = tk.Label(files_interactive_frame, text="Input Files ", font=(default_font, font_size_default))
+files_label.pack(side=tk.LEFT)
+
+files_browse_button = tk.Button(files_interactive_frame, text="Select Files", command=select_input_files)
+files_browse_button.pack(side=tk.RIGHT)
 
 files_entry = tk.Text(files_input_frame, font=(default_font, font_size_default), width=50, height=10)
 files_entry.pack()
@@ -93,7 +97,7 @@ def submit_action():
     else:
         decrypt(selected_files, key, output_dir)
 
-submit_button = tk.Button(submit_frame, text="Encrypt", command=submit_action, font=(default_font, font_size_default), pady=5, bg="green", fg="white")
+submit_button = tk.Button(submit_frame, text="Encrypt", command=submit_action, font=(default_font, font_size_default, "bold"), bd=0, pady=5, bg="green", fg="white")
 submit_button.pack()
 
 gui.mainloop()
