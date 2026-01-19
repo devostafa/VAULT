@@ -97,7 +97,7 @@ def submit_action():
     else:
         decrypt(selected_files, key, output_dir)
 
-submit_button = tk.Button(submit_frame, text="Encrypt", command=submit_action, font=(default_font, font_size_default, "bold"), bd=0, pady=5, bg="green", fg="white")
+submit_button = tk.Button(submit_frame, text="Encrypt", command=submit_action, font=(default_font, font_size_default, "bold"), bd=0, padx=10, pady=5, bg="green", fg="white")
 submit_button.pack()
 
 gui.mainloop()
