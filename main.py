@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import filedialog
+from tkinter import filedialog, messagebox
 from services.encrypt import encrypt
 from services.decrypt import decrypt
 import art
@@ -94,10 +94,12 @@ def submit_action():
     output_dir = output_path.get()
     if mode_var.get() == 1:
         encrypt(key, output_dir, selected_files)
+        messagebox.showinfo("Success", "Files encrypted successfully")
     else:
         decrypt(key, output_dir, selected_files)
+        messagebox.showinfo("Success", "Files decrypted successfully")
 
-submit_button = tk.Button(submit_frame, text="Encrypt", command=submit_action, font=(default_font, font_size_default, "bold"), bd=0, padx=10, pady=5, bg="green", fg="white")
+submit_button = tk.Button(submit_frame, text="Encrypt", command=submit_action, font=(default_font, font_size_default, "bold"), bd=0, padx=10, pady=5, bg="gray", fg="white")
 submit_button.pack()
 
 gui.mainloop()
