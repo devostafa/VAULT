@@ -2,8 +2,8 @@ name: Release
 
 on:
   push:
-    tags:
-      - "v*"
+    branches:
+      - master
 
 jobs:
   build:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest]
     permissions:
       contents: write
       
@@ -24,7 +24,9 @@ jobs:
           enable-cache: true
 
       - name: Set up Python
-        run: uv python install
+        run: |
+          uv sync
+          uv python install
 
       - name: Build standard distribution
         if: matrix.os == 'ubuntu-latest'
@@ -32,15 +34,14 @@ jobs:
 
       - name: Build Windows EXE
         if: matrix.os == 'windows-latest'
-        run: |
-          uv sync
-          uv run pyinstaller --windowed --onefile main.py
+        run: uv run pyinstaller --windowed --onefile --name "VAULT" main.py
 
       - name: Upload to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: Latest
+          make_latest: true
           files: dist/*
           fail_on_unmatched_files: false
-          append_body: true
         env:
           GITHUB_TOKEN: ${{ secrets.Release }}
