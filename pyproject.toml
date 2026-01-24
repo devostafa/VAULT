@@ -1,5 +1,5 @@
 [project]
-name = "vault"
+name = "VAULT"
 version = "0.1.0"
 description = "VAULT for file encryption and decryption"
 readme = "README.md"
