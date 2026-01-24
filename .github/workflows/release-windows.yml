@@ -1,4 +1,4 @@
-name: Release
+name: Release Windows
 
 on:
   push:
@@ -6,8 +6,8 @@ on:
       - "v*"
 
 jobs:
-  build-and-release:
-    runs-on: ubuntu-latest
+  build-windows:
+    runs-on: windows-latest
     permissions:
       contents: write
     steps:
